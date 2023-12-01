@@ -21,7 +21,7 @@ console.log('clicked me')
     <main className={`relative `}>
       <Nav handleBlur={toggleBlur} blur={isBlurred} handleShowNavLinks={handleShowNavLinks} showNavLinks={showNavLinks} />
       <Hero handleBlur={toggleBlur} blur={isBlurred} />
-      <section className="xl:padding-1 wide:padding-r padding-b">Hero</section>
+      <section className="xl:padding-l wide:padding-r padding-b">Hero</section>
       <section className="padding ">
         <PopularProducts />
       </section>

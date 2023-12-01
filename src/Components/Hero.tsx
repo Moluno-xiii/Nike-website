@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "./Button";
 import { arrowRight } from "../assets/icons";
 import { shoes, statistics } from "../constants";
@@ -6,18 +6,25 @@ import { bigShoe1 } from "../assets/images";
 import ShoeCard from "./ShoeCard";
 
 type Props = {
-    handleBlur :(event: React.MouseEvent) => void;
-    blur : boolean;
-}
+  handleBlur: (event: React.MouseEvent) => void;
+  blur: boolean;
+};
 
-const Hero: React.FC<Props> = ({handleBlur, blur}) => {
+const Hero: React.FC<Props> = ({ handleBlur, blur }) => {
+  const [bigShoeImg, setBigShoeImg] = useState(bigShoe1)
+
   return (
     <section
-      className={`w-full flex p-2 xl:flex-row flex-col justify-center min-h-screen gap-10 max-container ${ blur ? "blur-effect transition-effect" : ""}`}
+      className={`w-full flex p-2 xl:flex-row flex-col justify-center min-h-screen gap-10 max-container ${
+        blur ? "blur-effect transition-effect" : ""
+      }`}
       id="home"
     >
       <div className="relative xl:w-2/5 flex flex-col justify-center items-start w-full max-xl:padding-x pt-28">
-        <p className="capitalize text-xl font-montserrat text-coral-red" onClick={handleBlur}>
+        <p
+          className="capitalize text-xl font-montserrat text-coral-red"
+          onClick={handleBlur}
+        >
           our summer collections
         </p>
         <h1 className="capitalize mt-10 font-palanquin text-8xl max-sm: text-[72px] max-sm: leading-[82px] font-bold">
@@ -39,20 +46,33 @@ const Hero: React.FC<Props> = ({handleBlur, blur}) => {
           {statistics.map((stat, i) => (
             <div key={i}>
               <p className="text-4xl font-palanquin font-bold">{stat.value}</p>
-              <p className=" leading-7 text-coral-red montserrat">{stat.label}</p>
+              <p className=" leading-7 text-coral-red montserrat">
+                {stat.label}
+              </p>
             </div>
           ))}
         </div>
       </div>
 
       <div className="flex flex-1 relative items-center justify-center xl:min-h-screen max-xl:py-40 bg-primary bg-hero bg-cover bg-center">
-        <img src={bigShoe1} alt="image of shoe" width={500} height={500} className="z-10 object-contain relative"/>
-        <div className="flex">
-            {shoes.map((shoe, i) => (
-                <div key={i}>
-<ShoeCard imgUrl={shoe.bigShoe} changeBigShoeImage={'s'} bigShoeImage={shoe.thumbnail} />
-                </div>
-            ))}
+        <img
+          src={bigShoeImg}
+          alt="image of shoe"
+          width={500}
+          height={500}
+          className="z-10 object-contain relative"
+        />
+        <div className="flex sm:gap-6 gap-4 absolute -bottom-[5%] sm:left-[10%] max-sm:px-6">
+          {shoes.map((shoe, i) => (
+            <div key={i}>
+              <ShoeCard
+                imgUrl={shoe}
+                changeBigShoeImage={(shoe : any) => {setBigShoeImg(shoe)}}
+                bigShoeImage={bigShoeImg}
+              />
+            </div>
+            
+          ))}
         </div>
       </div>
     </section>

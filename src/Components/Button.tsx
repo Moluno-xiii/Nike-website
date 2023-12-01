@@ -5,7 +5,7 @@ type ButtonProps = {
 
 const Button: React.FC<ButtonProps> = ({ label, iconURL }) => {
   return (
-    <button className="flex justify-center items-center gap-2 px-7 py-4 font-montserrat text-lg leading-none bg-coral-red rounded-full text-white border-coral-red hover:bg-slate-500 duration-300">
+    <button className="flex justify-center items-center gap-2 px-7 py-4 font-montserrat text-lg leading-none bg-coral-red rounded-full text-white border-coral-red hover:bg-[#99EE99] duration-300">
       {label}
       <img
         src={iconURL}

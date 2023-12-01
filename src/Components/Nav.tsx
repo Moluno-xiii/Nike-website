@@ -88,7 +88,3 @@ const Nav: React.FC<Props> = ({
 
 export default Nav;
 
-
-git clone https://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@github.com/lahyor/simple-shell.git 
-git clone https://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@github.com:Moluno-xiii/Nike-website.git
-git remote add origin https://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@github.com/Moluno-xiii/Nike-website.git
